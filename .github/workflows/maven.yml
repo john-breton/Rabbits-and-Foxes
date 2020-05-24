@@ -1,0 +1,21 @@
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 14
+        uses: joschi/setup-jdk@v1
+        with:
+          java-version: '14'
+      - name: Build with Maven
+        run: mvn -B clean package -Dtest=\!GameViewTest --file pom.xml
