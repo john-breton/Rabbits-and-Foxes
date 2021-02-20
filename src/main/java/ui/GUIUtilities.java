@@ -1,5 +1,8 @@
 package ui;
 
+import com.github.weisj.darklaf.LafManager;
+import com.github.weisj.darklaf.theme.DarculaTheme;
+import com.github.weisj.darklaf.theme.IntelliJTheme;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -101,11 +104,7 @@ public final class GUIUtilities {
      * platforms, and removes the focus border form all buttons.
      */
     public static void applyDefaults() {
-        try {
-            UIManager.setLookAndFeel("com.jtattoo.plaf.noire.NoireLookAndFeel");
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-            log.error("Could not set the default look and feel", e);
-        }
+        LafManager.install(new DarculaTheme());
         UIManager.getLookAndFeelDefaults().put("Button.focus", new ColorUIResource(new Color(0, 0, 0, 0)));
         fc = new JFileChooser();
     }
@@ -207,6 +206,7 @@ public final class GUIUtilities {
         button.setForeground(Color.WHITE);
         button.setBackground(Color.BLACK);
         button.setFocusPainted(false);
+        button.setBorder(new BevelBorder(0, Color.DARK_GRAY, Color.DARK_GRAY));
         button.setFont(new Font("Times New Roman", Font.PLAIN, GUIUtilities.FONT_SIZE));
         button.addActionListener(actionListener);
     }

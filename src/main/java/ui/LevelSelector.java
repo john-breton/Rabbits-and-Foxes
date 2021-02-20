@@ -1,5 +1,6 @@
 package ui;
 
+import com.github.weisj.darklaf.LafManager;
 import model.*;
 import model.Fox.FoxType;
 import resources.Resources;
@@ -256,10 +257,9 @@ class LevelSelector extends JFrame implements ActionListener {
      * @param tileNumber 1 for left, 2 for middle, 3 for right.
      */
     private void setUpLevelDisplayButton(JButton button, int tileNumber) {
-        button.setIcon(new ImageIcon(Resources.BOARD.getImage().getScaledInstance((int) (GUIUtilities.SIDE_LENGTH /
-                                                                                         BOARD_DISPLAY_SIZE), (int) (
-                GUIUtilities.SIDE_LENGTH / BOARD_DISPLAY_SIZE), Image.SCALE_SMOOTH)));
-        button.setOpaque(false);
+        button.setIcon(new ImageIcon(Resources.BOARD.getImage().getScaledInstance(
+                (int) (GUIUtilities.SIDE_LENGTH / BOARD_DISPLAY_SIZE),
+                (int) (GUIUtilities.SIDE_LENGTH / BOARD_DISPLAY_SIZE), Image.SCALE_SMOOTH)));
         button.setFocusPainted(false);
         button.setBorder(DEFAULT);
         button.setContentAreaFilled(false);
