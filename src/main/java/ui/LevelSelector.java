@@ -274,9 +274,15 @@ class LevelSelector extends JFrame implements ActionListener {
         for (int y = 0; y < Board.SIZE; y++)
             for (int x = 0; x < Board.SIZE; x++)
                 switch (tileNumber) {
-                    case 1 -> button.add(tilesLeft[x][y]);
-                    case 2 -> button.add(tilesMiddle[x][y]);
-                    case 3 -> button.add(tilesRight[x][y]);
+                    case 1:
+                        button.add(tilesLeft[x][y]);
+                        break;
+                    case 2:
+                        button.add(tilesMiddle[x][y]);
+                        break;
+                    case 3:
+                        button.add(tilesRight[x][y]);
+                        break;
                 }
     }
 
@@ -304,7 +310,7 @@ class LevelSelector extends JFrame implements ActionListener {
                 levelLabelRight.setText(levelList.get(pageNumber * 3 - 1).getName());
             }
         } else switch (levelList.size() % 3) {
-            case 1 -> {
+            case 1:
                 updateLevelPreview(tilesLeft, levelList.get(pageNumber * 3 - 3));
                 updateLevelPreview(tilesMiddle, new Board("Empty"));
                 updateLevelPreview(tilesRight, new Board("Empty"));
@@ -317,8 +323,8 @@ class LevelSelector extends JFrame implements ActionListener {
                 btnRightLevel.setEnabled(false);
                 levelLabelMiddle.setText("Empty");
                 levelLabelRight.setText("Empty");
-            }
-            case 2 -> {
+                break;
+            case 2:
                 updateLevelPreview(tilesLeft, levelList.get(pageNumber * 3 - 3));
                 updateLevelPreview(tilesMiddle, levelList.get(pageNumber * 3 - 2));
                 updateLevelPreview(tilesRight, new Board("Empty"));
@@ -331,7 +337,7 @@ class LevelSelector extends JFrame implements ActionListener {
                 }
                 btnRightLevel.setEnabled(false);
                 levelLabelRight.setText("Empty");
-            }
+                break;
         }
         this.revalidate();
         this.repaint();
